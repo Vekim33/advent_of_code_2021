@@ -6,7 +6,7 @@ type Aim       = Int
 
 main = do
  content <- readFile "input.txt"
- let commands = getCommand $ lines content
+ let commands    = getCommand $ lines content
      (h, d)      = move (0, 0) commands
      (h', d', a) = move' (0, 0, 0) commands
  putStrLn $ 
@@ -38,7 +38,7 @@ move (h, d) (x:xs) =
              Down    -> move (h, d + n) xs
  where (dir, n) = x
 
-move' :: (Position, Position, Aim) ->[(Direction, Int)] -> (Position, Position, Aim)
+move' :: (Position, Position, Aim) -> [(Direction, Int)] -> (Position, Position, Aim)
 move' (h, d, a) []     = (h, d, a)
 move' (h, d, a) (x:xs) =
  case dir of Forward -> move' (h + n, d + a * n, a) xs
